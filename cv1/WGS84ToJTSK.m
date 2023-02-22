@@ -46,7 +46,7 @@ e2_b = (a_b^2 - b_b^2)/a_b^2;
 W_b = sqrt(1-e2_b*(sin(phir))^2);
 N_b = a_b/W_b;
 
-%Longitude Bessel ellipsoid
+%Latitude, longitude Bessel ellipsoid
 lamb = atan(Y_b/X_b);
 phib = atan(Z_b/((1 - e2_b)*sqrt(X_b^2 + Y_b^2));
 
