@@ -1,8 +1,8 @@
-function [X,Y] = WGS84ToJTSK(phi, lam)
+function [X,Y] = WGS84ToJTSK(phi_wgs, lam_wgs)
 
 %Degrees to rad
-phir= pi/180*phi;
-lamr= pi/180*lam;
+phir_wgs= pi/180*phi_wgs;
+lamr_wgs= pi/180*lam_wgs;
 
 %WGS84, definition
 a_wgs = 6378137;
@@ -10,13 +10,13 @@ b_wgs = 6356752.3142;
 
 %Parameters of WGS84
 e2_wgs = (a_wgs^2 - b_wgs^2)/a_wgs^2;
-W_wgs = sqrt(1-e2_wgs*(sin(phir))^2);
+W_wgs = sqrt(1-e2_wgs*(sin(phir_wgs))^2);
 N_wgs = a_wgs/W_wgs;
 
 %Cartesian coordinates
-X_wgs=N_wgs*cos(phir)*cos(lamr);
-Y_wgs=N_wgs*cos(phir)*sin(lamr);
-Z_wgs=N_wgs*sin(phir)*(1-e2_wgs);
+X_wgs=N_wgs*cos(phir_wgs)*cos(lamr_wgs);
+Y_wgs=N_wgs*cos(phir_wgs)*sin(lamr_wgs);
+Z_wgs=N_wgs*sin(phir_wgs)*(1-e2_wgs);
 
 %Parameters of 3D similarity transformation
 omx = 4.9984 / 3600 * pi/180;
@@ -43,12 +43,14 @@ b_b = 6356078.9633;
 
 %Parameters of Bessel ellipsoid
 e2_b = (a_b^2 - b_b^2)/a_b^2;
-W_b = sqrt(1-e2_b*(sin(phir))^2);
-N_b = a_b/W_b;
 
 %Latitude, longitude Bessel ellipsoid
-lamb = atan(Y_b/X_b);
-phib = atan(Z_b/((1 - e2_b)*sqrt(X_b^2 + Y_b^2));
+lamr_b = atan(Y_b/X_b);
+phir_b = atan(Z_b/((1 - e2_b)*sqrt(X_b^2 + Y_b^2));
+
+W_b = sqrt(1-e2_b*(sin(phir_b))^2);
+N_b = a_b/W_b;
+
 
 
 
