@@ -8,11 +8,10 @@ vk_r = vk * pi/180;
 
 %Transformed latitude
 dv = vk_r - v_r;
-s_r = asin(sin(u_r)*sin(uk_r) + cos(u_r) * cos(uk_r) * cos(dv));
+s_r = asin(sin(u_r).*sin(uk_r) + cos(u_r) .* cos(uk_r) .* cos(dv));
 
 %Transformed longitude
-d_r = atan2 (sin(dv)*cos(u_r),cos(u_r)*sin(uk_r)*cos(dv)-sin(u_r)*cos(uk_r));
+d_r = atan2 (sin(dv).*cos(u_r),cos(u_r).*sin(uk_r).*cos(dv)-sin(u_r).*cos(uk_r));
 
-%Radians to degrees
 s = s_r*180/pi;
 d = d_r*180/pi;
