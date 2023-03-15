@@ -17,4 +17,4 @@ dc(idx) = [];
 [xc, yc] = proj(R, sc, dc, u0);
 
 %Draw continents
-plot(xc, yc);
+plot(xc, yc, 'b', 'LineWidth', 2);

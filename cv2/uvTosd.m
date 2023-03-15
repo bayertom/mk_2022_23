@@ -14,4 +14,4 @@ s_r = asin(sin(u_r).*sin(uk_r) + cos(u_r) .* cos(uk_r) .* cos(dv));
 d_r = atan2 (sin(dv).*cos(u_r),cos(u_r).*sin(uk_r).*cos(dv)-sin(u_r).*cos(uk_r));
 
 s = s_r*180/pi;
-d = d_r*180/pi;
+d = -d_r*180/pi;
