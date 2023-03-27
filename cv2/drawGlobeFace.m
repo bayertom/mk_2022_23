@@ -22,7 +22,6 @@ end
 
 shapewrite(data, 'E:\Work\MATLAB\meridians.shp')
     
-
 %Draw continents
 drawContinents ('eur.txt', uk, vk, 6380, 0, proj);
 drawContinents ('amer.txt', uk, vk, 6380, 0, proj);
