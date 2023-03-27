@@ -7,6 +7,22 @@ axis equal
 plot (XM', YM', 'k');
 plot (XP', YP', 'k');
 
+%Define geometry
+data = struct('Geometry','','X',[],'Y',[], 'Name', '');
+[m, n] = size(XM);
+
+%Write meridians to shape file
+for i = 1 :m
+    Data.Geometry = 'Polyline';  %Point, Polygon
+    Data.X = XM(i, :) %lat, lon
+    Data.Y = YM(i, :)
+    Data.Name = 'Meridian' + string(i)
+    data(i) = Data
+end
+
+shapewrite(data, 'E:\Work\MATLAB\meridians.shp')
+    
+
 %Draw continents
 drawContinents ('eur.txt', uk, vk, 6380, 0, proj);
 drawContinents ('amer.txt', uk, vk, 6380, 0, proj);

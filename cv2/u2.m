@@ -65,3 +65,4 @@ ub = [uj, uj, us, us, uj];
 vb = [180, 270, 270, 180, 180];
 subplot(2,3,4)
 drawGlobeFace(u_min, u_max,v_min, v_max, D_u, D_v, d_u, d_v, uk, vk, R,u0, proj, ub, vb)
+
