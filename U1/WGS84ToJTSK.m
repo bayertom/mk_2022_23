@@ -53,7 +53,7 @@ phibr = atan2(Z_b, (1 - e2_b)*sqrt(X_b^2 + Y_b^2));
 %Reduction to Ferro
 lambr_f = lambr + (17 + 2/3) * pi / 180;
 
-%Gauss conformal projection: constants values
+%Gaussian conformal projection: constants values
 phi_0 = 49.5 *pi / 180;
 
 alpha = sqrt (1+e2_b*(cos(phi_0))^4/(1-e2_b))
@@ -61,8 +61,22 @@ u0 = asin(sin(phi_0)/alpha);
 k_n = (tan(phi_0/2 + pi/4))^alpha*((1-sqrt(e2_b)*sin(phi_0))/(1+sqrt(e2_b)*sin(phi_0)))^alpha*sqrt(e2_b)/2
 k_d = tan(u0/2 + pi/4);
 k = k_n / k_d;
-
 R = (a_b * sqrt(1 - e2_b))/(1 - e2_b * sin(phi_0)^2);
 
-%Gauss conformal projection: ellipsoid -> sphere
+%Gaussian conformal projection: ellipsoid -> sphere
+c=1/k(tan(phibr/2 + pi/4)*((1-sqrt(e2_b)*sin(phibr))/(1+sqrt(e2_b)*sin(phibr)))^(sqrt(e2_b)/2))^alpha;
+ur = 2*atan(c)-pi/2;
+vr = alpha * lambr_f;
+
+%Transformation to the oblique aspect
+u = ur*180/pi;
+v = vr*180/pi;
+uk = 59+42/60+42.6969/3600;
+vk = 42+31/60+31.41725/3600;
+[s,d]=uvTosd(u,v,uk,vk);
+
+%LCC
+
+
+
 
