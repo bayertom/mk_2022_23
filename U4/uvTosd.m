@@ -1,17 +1,21 @@
-function [s, d] = uvTosd(u, v, uk, vk)
+function [s,d] = uvTosd(u, v, uk, vk)
+    
+    %Degrees to radians
+    u = u * pi /180;
+    v = v * pi /180;
+    uk = uk * pi / 180;
+    vk = vk * pi / 180;
 
-%Degrees to radians
-u_r = u * pi/180;
-v_r = v * pi/180;
-uk_r = uk * pi/180;
-vk_r = vk * pi/180;
+    %Longitude difference
+    dv = vk - v;
+    
+    %Latitude, oblique aspect
+    s = asin(sin(u) .* sin(uk) + cos(u).* cos(uk) .* cos(dv));
+    
+    %Longitude, oblique aspect
+    d = atan2(sin(dv) .* cos(u), -sin(u).*cos(uk) + cos(u) .* sin(uk) .* cos(dv));
+    s = s * 180 / pi;
+    d = d * 180 / pi;   
+    d=-d;
+end
 
-%Transformed latitude
-dv = vk_r - v_r;
-s_r = asin(sin(u_r).*sin(uk_r) + cos(u_r) .* cos(uk_r) .* cos(dv));
-
-%Transformed longitude
-d_r = atan2 (sin(dv).*cos(u_r),cos(u_r).*sin(uk_r).*cos(dv)-sin(u_r).*cos(uk_r));
-
-s = s_r*180/pi;
-d = -d_r*180/pi;
